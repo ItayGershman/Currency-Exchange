@@ -23,10 +23,9 @@ export const ChartContainer = styled.div`
 `;
 export const ChartDisplay = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: ${(props) => props.direction};
   align-items: center;
   justify-content: center;
-  margin-left: 10px;
 `;
 export const ChartNav = styled.div`
   margin: 25px;
@@ -39,7 +38,7 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: ${(props) => props.direction};
   margin: 0;
 `;
 
@@ -55,11 +54,11 @@ export const StyledLink = styled(LinkTo)`
   font-size: 18px;
   border-radius: 25px;
   border: 0;
-  padding: 14px;
-  margin: 20px;
+  padding: ${(props) => props.padding};
+  margin: ${(props) => props.margin};
   text-align: center;
   background: transparent;
-  width: 140px;
+  width: ${(props) => props.width};
   background: #fa5e03;
   text-decoration: none;
   cursor: pointer;

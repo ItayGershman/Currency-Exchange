@@ -22,6 +22,21 @@ const Chart = (props) => {
     myRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth);
+  const windowsReSize = () => {
+    setIsMobile(window.innerWidth);
+  };
+  useEffect(() => {
+    window.addEventListener('resize', windowsReSize);
+    return () => window.removeEventListener('resize', windowsReSize);
+  });
+
+  const handleDirection = () => {
+    if (isMobile < 800) {
+      return 'column';
+    } else return 'row';
+  };
+
   let history = useHistory();
   useEffect(() => {
     if (rates.length === 0) {
@@ -39,11 +54,11 @@ const Chart = (props) => {
   }, [rates]);
 
   return (
-    <ChartContainer>
+    <ChartContainer >
       {loading && <Spinner></Spinner>}
       {error && <div>{error}</div>}
       {rates.length > 0 && (
-        <ChartDisplay ref={myRef}>
+        <ChartDisplay direction={() => handleDirection()} ref={myRef}>
           {chart === 'line' ? (
             <CurrencyLineChart rates={rates} />
           ) : chart === 'area' ? (

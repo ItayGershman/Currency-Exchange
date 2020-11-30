@@ -25,8 +25,11 @@ const DateAndCurrency = () => {
   const [from, setFrom] = useState('');
   const [to, setTo] = useState('');
   const [startDate, setStartDate] = useState(new Date());
+  
   let history = useHistory();
   const currencies = ['EUR', 'USD', 'GBP'];
+
+  
 
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
@@ -34,7 +37,7 @@ const DateAndCurrency = () => {
     if (from !== '' && to !== '') {
       if (from !== to) dispatch(getExchangeRate(startDate, from, to));
       else alert('Please choose different Currencies');
-      
+
       const path = history.location.pathname;
       if (path === '/') history.push('/line-charts');
       else history.push(path);
