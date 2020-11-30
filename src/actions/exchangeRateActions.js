@@ -26,7 +26,7 @@ const getExchangeRate = (date, base, convertedCurr) => async (dispatch) => {
       today = formatDate(date);
       todayObj = findTodayRate(rates, today);
     }
-    for (let j = 0; j < 7; ++j) {
+    for (let j = 7; j > 0; j--) {
       weekData.push(rates[todayObj - j]);
     }
     const payload = {

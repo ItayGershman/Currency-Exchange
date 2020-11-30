@@ -18,7 +18,7 @@ const ChartNavigation = () => {
     if (isMobile < 700) {
       return { padding: '5px', margin: '7px', width: '95px' };
     } else {
-      return { padding: '20px', margin: '20px', width: '140px'};
+      return { padding: '12px', margin: '20px', width: '140px'};
     }
   };
 

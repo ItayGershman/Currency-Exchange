@@ -128,10 +128,11 @@ export const DatePickerStyle = styled.div`
   border-radius: 25px;
 `;
 export const Label = styled.label`
-  opacity: 0.7;
+  color:white;
 `;
 export const DateLabel = styled(Label)`
   border-right: 1px solid;
+  color:black
 `;
 export const DropDownStyle = styled.div`
   margin: 1rem;

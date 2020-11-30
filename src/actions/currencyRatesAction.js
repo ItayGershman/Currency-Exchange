@@ -38,7 +38,7 @@ const getCurrencyRates = (base) => async (dispatch) => {
   dispatch({ type: SET_CURRENCY_RATES_REQUEST });
 
   //Set time period to get rates from
-  const period = 365;
+  const period = 375;//1 year + 1 week before user choice + 3 days because there are dates with no exchange
   let date = new Date();
   let today = formatDate(date);
   date.setDate(date.getDate() - period);

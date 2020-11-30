@@ -29,8 +29,7 @@ const DateAndCurrency = () => {
   let history = useHistory();
   const currencies = ['EUR', 'USD', 'GBP'];
 
-  
-
+  let date = new Date();
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -59,7 +58,8 @@ const DateAndCurrency = () => {
             <DateLabel>Date </DateLabel>
             <DatePicker
               className='date-input'
-              maxDate={new Date()}
+              maxDate={startDate}
+              minDate={date.setDate(date.getDate() - 364)}
               closeOnScroll={true}
               selected={startDate}
               onChange={(date) => setStartDate(date)}
