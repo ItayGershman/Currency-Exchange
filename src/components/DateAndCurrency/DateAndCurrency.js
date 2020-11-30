@@ -25,7 +25,7 @@ const DateAndCurrency = () => {
   const [from, setFrom] = useState('');
   const [to, setTo] = useState('');
   const [startDate, setStartDate] = useState(new Date());
-  
+  let today = new Date();
   let history = useHistory();
   const currencies = ['EUR', 'USD', 'GBP'];
 
@@ -39,7 +39,6 @@ const DateAndCurrency = () => {
 
       const path = history.location.pathname;
       if (path === '/') history.push('/line-charts');
-      else history.push(path);
     } else {
       alert('Please fill all inputs');
     }
@@ -58,7 +57,7 @@ const DateAndCurrency = () => {
             <DateLabel>Date </DateLabel>
             <DatePicker
               className='date-input'
-              maxDate={startDate}
+              maxDate={today}
               minDate={date.setDate(date.getDate() - 364)}
               closeOnScroll={true}
               selected={startDate}

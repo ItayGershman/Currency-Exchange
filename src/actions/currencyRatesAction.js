@@ -38,19 +38,17 @@ const getCurrencyRates = (base) => async (dispatch) => {
   dispatch({ type: SET_CURRENCY_RATES_REQUEST });
 
   //Set time period to get rates from
-  const period = 375;//1 year + 1 week before user choice + 3 days because there are dates with no exchange
+  const period = 375; //1 year + 1 week before user choice + 3 days because there are dates with no exchange
   let date = new Date();
   let today = formatDate(date);
   date.setDate(date.getDate() - period);
   let startDate = formatDate(date);
-
   const currencies = ['EUR', 'USD', 'GBP'];
   const convertedCurr = currencies.filter((cur) => cur !== base);
 
   try {
     const url = `https://api.exchangeratesapi.io/history?base=${base}&start_at=${startDate}&end_at=${today}`;
     let { data } = await axios.get(url); //Get rates from base to converted currency
-
     //Set first exchange rate
     let dataObj = formatData(startDate, date, convertedCurr[0], data, period);
     localStorage.setItem(
